@@ -33,7 +33,7 @@ public class sheepMovement : MonoBehaviour
         }
 
         /* sheep movement */
-        
+
         // if the sheep is allowed to move 
 
         if (moving) {
@@ -44,7 +44,7 @@ public class sheepMovement : MonoBehaviour
             Debug.Log(((Vector2)transform.position - tap).magnitude);
 
             // if the sheep is far enough
-            if (moving && ((Vector2)transform.position - tap).magnitude >= minimumDistance) {
+            if (((Vector2)transform.position - tap).magnitude >= minimumDistance) {
                 // make sure the sheep moves at the speed of the device-based on fps
                 float step = speed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, goal, step);
