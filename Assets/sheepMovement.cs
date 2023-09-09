@@ -5,38 +5,41 @@ using UnityEngine;
 public class sheepMovement : MonoBehaviour
 {
     public float speed = 8f;
-    Vector2 lastClickedPos;
-    Vector2 finalPos;
+    Vector2 lastClickedPos, 
+            finalPos ;
     bool moving;
+    float minimumDistance = 1.0;
 
-    private void Update()
-    {
-        // checking if the click occurs
-        if (Input.GetMouseButtonDown(0))
-        {
+    private void Update() {
+
+        /* check when click occurs */
+        if (Input.GetMouseButtonDown(0)) { // "0":"Pressed left-click." 
             lastClickedPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             setDestination();
             moving = true;
         }
-        //if sheep not very close to click
+
+        /*  if the sheep is still far from click-position */
+        
+        // print the distance between sheep and click
         Debug.Log(((Vector2)transform.position - lastClickedPos).magnitude);
-        if (moving && ((Vector2)transform.position - lastClickedPos).magnitude >= 1)
-        {
-            // step is to make sure the sheep moves at the speed of the device-based on fps
+
+        // if the sheep is far enough
+        if (moving && ((Vector2)transform.position - lastClickedPos).magnitude >= minimumDistance) {
+            // make sure the sheep moves at the speed of the device-based on fps
             float step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, finalPos, step);
-
         }
-        else //do not move
-        {
+        // else: sheep is instructed that it can not move
+        else {
             moving = false;
         }
-        void setDestination()
-            {
-             //move towards the mouse click
-             int incrementValue = 3;
-             finalPos.x = Random.Range(lastClickedPos.x + incrementValue, lastClickedPos.x - incrementValue);
-             finalPos.y = Random.Range(lastClickedPos.y + incrementValue, lastClickedPos.y - incrementValue);
-            }
+
+        void setDestination() {
+            //move towards the mouse click, but with some "randomness".
+            int jitter = 3; // ~ sheepDirectionRandomness
+            finalPos.x = Random.Range(lastClickedPos.x + jitter, lastClickedPos.x - jitter);
+            finalPos.y = Random.Range(lastClickedPos.y + jitter, lastClickedPos.y - jitter);
+        }
     }
 }
