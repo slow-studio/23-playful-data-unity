@@ -29,14 +29,16 @@ public class sheepMovement : MonoBehaviour
 
         void setDestination() {
             // get sheep's position
-            sheepPos =  Vector2 (   GetComponent<Transform>().position.x, 
+            sheepPos = new Vector2 (   GetComponent<Transform>().position.x, 
                                     GetComponent<Transform>().position.y 
                                 );
+            // Debug.Log(GetComponent<Transform>().position);
 
             // set goal
             goal = (tap - sheepPos).normalized //direction
-                    * sheepMoveDistance //magnitude
+                    * (tap - sheepPos).magnitude //magnitude
                     ;
+            Debug.Log(goal);
         }
 
         /* sheep movement */
@@ -48,7 +50,7 @@ public class sheepMovement : MonoBehaviour
             /*  if the sheep is still far from click-position */
             
             // print the distance between sheep and click
-            Debug.Log( "distance between sheep and its goal = " + (goal - sheepPos).magnitude );
+            // Debug.Log( "distance between sheep and its goal = " + (goal - sheepPos).magnitude );
 
             // if the sheep is far enough, it can move toward the goal
             if ((goal - sheepPos).magnitude >= minimumDistance) {
