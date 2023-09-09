@@ -57,9 +57,7 @@ public class sheepMovement : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, goal, step);
             }
             // else: sheep is instructed that it can not move
-            else {
-                moving = false;
-            }
+            else moving = false;
         }
     }
 }
