@@ -8,7 +8,7 @@ public class sheepMovement : MonoBehaviour
     Vector2 lastClickedPos, 
             finalPos ;
     bool moving;
-    float minimumDistance = 1.0;
+    float minimumDistance = 1.0f;
 
     private void Update() {
 
