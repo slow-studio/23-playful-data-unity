@@ -6,10 +6,12 @@ public class sheepMovement : MonoBehaviour
 {
     public float speed = 8f;
     Vector2 tap, // where the person taps on the screen
+            sheepPos,
             goal // where the sheep needs to go to
             ;
     bool moving;
-    float minimumDistance = 1.0f;
+    float minimumDistance = 0.1f;
+    float sheepMoveDistance = 1.0f; // this is how much the sheep moves when asked to
 
     private void Update() {
 
@@ -26,10 +28,13 @@ public class sheepMovement : MonoBehaviour
         }
 
         void setDestination() {
-            //move towards the mouse click, but with some "randomness".
-            int jitter = 3; // ~ sheepDirectionRandomness
-            goal.x = Random.Range(tap.x + jitter, tap.x - jitter);
-            goal.y = Random.Range(tap.y + jitter, tap.y - jitter);
+            // get sheep's position
+            sheepPos =  ;
+
+            // set goal
+            goal = (tap - sheepPos).normalized //direction
+                    * sheepMoveDistance //magnitude
+                    ;
         }
 
         /* sheep movement */
@@ -41,12 +46,14 @@ public class sheepMovement : MonoBehaviour
             /*  if the sheep is still far from click-position */
             
             // print the distance between sheep and click
-            Debug.Log(((Vector2)transform.position - tap).magnitude);
+            Debug.Log( "distance between sheep and its goal = " + (goal - sheepPos).magnitude );
 
-            // if the sheep is far enough
-            if (((Vector2)transform.position - tap).magnitude >= minimumDistance) {
-                // make sure the sheep moves at the speed of the device-based on fps
+            // if the sheep is far enough, it can move toward the goal
+            if ((goal - sheepPos).magnitude >= minimumDistance) {
+                // set speed of movement
+                // (make sure the sheep moves at the speed of the device-based on fps)
                 float step = speed * Time.deltaTime;
+                // let the sheep move
                 transform.position = Vector2.MoveTowards(transform.position, goal, step);
             }
             // else: sheep is instructed that it can not move
