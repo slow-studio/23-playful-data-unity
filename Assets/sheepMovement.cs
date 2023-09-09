@@ -29,7 +29,9 @@ public class sheepMovement : MonoBehaviour
 
         void setDestination() {
             // get sheep's position
-            sheepPos =  ;
+            sheepPos =  Vector2 (   GetComponent<Transform>().position.x, 
+                                    GetComponent<Transform>().position.y 
+                                );
 
             // set goal
             goal = (tap - sheepPos).normalized //direction
