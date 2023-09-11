@@ -11,7 +11,7 @@ public class sheepMovement : MonoBehaviour
             ;
     bool moving;
     float minimumDistance = 0.1f;
-    float sheepMoveDistance = 1.0f; // this is how much the sheep moves when asked to
+    float sheepMoveDistance = 1f; // this is how much the sheep moves when asked to
     float sheepJitter = 0.25f; // when the sheep moves, it moves a bit randomly by this value
 
     private void Update() {
@@ -34,7 +34,6 @@ public class sheepMovement : MonoBehaviour
                                 GetComponent<Transform>().position.x, 
                                 GetComponent<Transform>().position.y 
                                 );
-
             // set goal
             Vector2 dir = new Vector2(
                                 (tap.x - sheepPos.x) // the vector.x between sheep and tap
