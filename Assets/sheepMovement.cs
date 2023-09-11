@@ -6,7 +6,6 @@ public class sheepMovement : MonoBehaviour
 {
     public float speed = 8f;
     Vector2 tap, // where the person taps on the screen
-            sheepPos,
             goal // where the sheep needs to go to
             ;
     bool moving;
@@ -29,12 +28,11 @@ public class sheepMovement : MonoBehaviour
         }
 
         void setDestination() {
-            // get sheep's position
-            sheepPos =  new Vector2 ( 
-                                GetComponent<Transform>().position.x, 
-                                GetComponent<Transform>().position.y 
-                                );
-            // set goal
+
+            // store the sheep's current position
+            Vector2 sheepPos = getSheepPos();
+
+            // this is the vector joining the sheep to the tap
             Vector2 dir = new Vector2(
                                 (tap.x - sheepPos.x) // the vector.x between sheep and tap
                                     + (sheepJitter*Random.value) // add jitter
@@ -62,9 +60,12 @@ public class sheepMovement : MonoBehaviour
         if (moving) {
 
             /*  if the sheep is still far from click-position */
-            
+
+            // store the sheep's current position
+            Vector2 sheepPos = getSheepPos();
+
             // print the distance between sheep and click
-            Debug.Log( "distance between sheep and its goal = " + (goal - /* sheep position: */ new Vector2 ( GetComponent<Transform>().position.x, GetComponent<Transform>().position.y ) ).magnitude );
+            Debug.Log( "distance between sheep and its goal = " + ( goal - sheepPos ).magnitude );
 
             // if the sheep is far enough, it can move toward the goal
             if ((goal - sheepPos).magnitude >= minimumDistance) {
@@ -76,6 +77,13 @@ public class sheepMovement : MonoBehaviour
             }
             // else: sheep is instructed that it can not move
             else moving = false;
+        }
+
+        Vector2 getSheepPos() {
+            return new Vector2 ( 
+                                GetComponent<Transform>().position.x, 
+                                GetComponent<Transform>().position.y 
+                                );
         }
     }
 }
