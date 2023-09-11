@@ -29,8 +29,9 @@ public class sheepMovement : MonoBehaviour
 
         void setDestination() {
             // get sheep's position
-            sheepPos =  Vector2 (   GetComponent<Transform>().position.x, 
-                                    GetComponent<Transform>().position.y 
+            sheepPos =  new Vector2 ( 
+                                GetComponent<Transform>().position.x, 
+                                GetComponent<Transform>().position.y 
                                 );
 
             // set goal
