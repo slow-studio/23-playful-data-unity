@@ -35,7 +35,8 @@ public class sheepMovement : MonoBehaviour
                                 );
 
             // set goal
-            goal = (tap - sheepPos).normalized //direction
+            Vector2 dir = new Vector2((tap.x - sheepPos.x),(tap.y - sheepPos.y));
+            goal = dir.normalized //direction 
                     * sheepMoveDistance //magnitude
                     ;
         }
