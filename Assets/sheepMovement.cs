@@ -31,9 +31,12 @@ public class sheepMovement : MonoBehaviour
             moving = true;
             // make sheep move
             /*  if the sheep is still far from click-position */
-            if (moving && (goal - sheepPos).magnitude >= minimumDistance)
+            if (moving)
             {
-                moveSheep();
+                if ((goal - sheepPos).magnitude >= minimumDistance)
+                {
+                    moveSheep();
+                }
             }
             // else sheep is not allowed to move
             else moving = false;
