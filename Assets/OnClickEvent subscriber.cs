@@ -15,9 +15,9 @@ public class OnClickEventsubscriber : MonoBehaviour
 
    private void Testing_onBushClick(object sender, EventArgs e)
     {
-        Debug.Log(" space was pressed ");
         OnClickEvent onclickEvents = GetComponent<OnClickEvent>();
         //unsubscribes from the event trigger
         onclickEvents.onBushClick -= Testing_onBushClick;
+        Debug.Log(" space was pressed ");
     }
 }

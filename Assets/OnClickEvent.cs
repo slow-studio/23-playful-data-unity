@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class OnClickEvent : MonoBehaviour
 {
-    public event EventHandler onBushClick;
+    public event EventHandler onBushClick; //passing the generic parameter through the event
+    //<onBushClickEventArgs>
+    // making a class that derives from event args to pass more info
+    //public class onBushClickEventArgs : EventArgs
+   // {
+    //    public int spaceCount;
+    //}
 
     private void Start()
     {
-        onBushClick += Testing_onBushClick;
-    }
-    //defining a function that will recieve this event
-    private void Testing_onBushClick(object sender, EventArgs e)
-    {
-        Debug.Log(" space was pressed ");
+        //fires off the main event 
     }
 
     private void Update()
@@ -23,9 +24,6 @@ public class OnClickEvent : MonoBehaviour
         //conditions : mouse click, sheep needs to not already be inside the bush
         //but for now, simplicity:
         if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if (onBushClick != null)
-            onBushClick(this, EventArgs.Empty);
-        }
+        onBushClick?.Invoke(this, EventArgs.Empty);
     }
 }
