@@ -15,7 +15,7 @@ public class TestEmitter : MonoBehaviour
             EventManager.TriggerEvent("Test");
 
         //adding another trigger 
-        if (Input.GetMouseButtonDown(0))
-            EventManager.TriggerEvent("ChangeColor");
+        if (Input.GetKeyDown(KeyCode.Space))
+            EventManager.TriggerEvent("ChangeColor", Color.gray);
     }
 }

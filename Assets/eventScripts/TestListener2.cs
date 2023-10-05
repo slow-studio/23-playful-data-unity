@@ -26,8 +26,10 @@ public class TestListener2 : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} recieved an EXCITING test :D");
     }
-    private void OnChangeColor()
+    private void OnChangeColor(object data)
     {
-        spriteRenderer.color = spriteRenderer.color == Color.white ? Color.yellow : Color.white;
+        //c color is the color version of the data being passed
+        Color c = (Color)data;
+        spriteRenderer.color = c;
     }
 }

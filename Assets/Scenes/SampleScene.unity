@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f75c56060b466d4c884f9217e7cc2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 417399983}
 --- !u!61 &417399978
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -241,6 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528e43d1c9a80f0408c8b8d96b394953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &417399983 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9004301443012330308, guid: e4246539a942ab6459a9a2ed3f868c11, type: 3}
+  m_PrefabInstance: {fileID: 1855328950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
