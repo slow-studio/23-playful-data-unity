@@ -13,5 +13,9 @@ public class TestEmitter : MonoBehaviour
         //recievers will now react to this with a callback function
         if (Input.GetMouseButtonDown(1))
             EventManager.TriggerEvent("Test");
+
+        //adding another trigger 
+        if (Input.GetMouseButtonDown(0))
+            EventManager.TriggerEvent("ChangeColor");
     }
 }
