@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sheepMovement : MonoBehaviour
+public class SheepMovement : MonoBehaviour
 {
     public float speed = 8f;
     Vector2 tap, // where the person taps on the screen

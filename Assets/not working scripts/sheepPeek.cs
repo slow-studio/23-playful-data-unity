@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class sheepPeek : MonoBehaviour
 {
-    sheepMovement sheepPeek;
+    SheepMovement sheepMovement;
     //[SerializeField] - can see it in the other scripts but can't be edited like in public declaration
     [SerializeField] GameObject sheep;
 
@@ -12,7 +12,7 @@ public class sheepPeek : MonoBehaviour
     void Awake()
     {
         //finding the gameobject refereced by the script sheepmovement
-        sheepMovement = GameObject.Find("sheep").GetComponent;
+        sheepMovement = GameObject.Find("sheep").GetComponent<SheepMovement>();
     }
 
     // Update is called once per frame
