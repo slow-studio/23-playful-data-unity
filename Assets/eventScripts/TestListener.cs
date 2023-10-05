@@ -20,6 +20,6 @@ public class TestListener : MonoBehaviour
     }
     private void OnTest()
     {
-        Debug.Log("recieved test :D");
+        Debug.Log($"{gameObject.name} recieved test :D");
     }
 }
