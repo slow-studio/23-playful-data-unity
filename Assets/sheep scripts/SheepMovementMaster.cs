@@ -6,19 +6,22 @@ public class SheepMovementMaster : MonoBehaviour
 {
     public float speed;
     public Vector2 DirectionToClick { get; private set; }
+    public Vector2 sheepPos;
 
     [SerializeField]
     private float rotationSpeed;
 
     private Rigidbody2D rigid_body;
     private Vector2 goal;
+    private bool moving = false;
 
     private void Awake()
     {
         rigid_body = GetComponent<Rigidbody2D>();
-        //goal = transform.up;
+        goal = transform.up;
     }
-    private void Update()
+   
+    private void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -26,20 +29,29 @@ public class SheepMovementMaster : MonoBehaviour
             Vector2 sheepToClickVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             DirectionToClick = sheepToClickVector.normalized;
 
-            // goal = sheepToClickVector.magnitude;
+            //goal = sheepToClickVector.magnitude;
         }
-    }
-    private void FixedUpdate()
-    {
+
+        //getting sheep position
+        sheepPos = new Vector2(
+                                GetComponent<Transform>().position.x,
+                                GetComponent<Transform>().position.y
+                                );
+
         //the logic for the sheep movement is here
         UpdateGoal();
         FaceGoal();
         SetVelocity();
+        moving = true;
     }
 
     private void UpdateGoal()
     {
-        goal = DirectionToClick;
+        if (moving)
+            goal = DirectionToClick;
+
+        else
+            moving = false;
     }
 
     private void FaceGoal()
@@ -52,7 +64,11 @@ public class SheepMovementMaster : MonoBehaviour
 
     private void SetVelocity()
     {
-        rigid_body.velocity = transform.up * speed;
+        if (sheepPos == goal)
+            rigid_body.velocity = Vector2.zero;
+        //transform.position = Vector3.MoveTowards(transform.position, goal, speed);
+        else
+            rigid_body.velocity = transform.up * speed;
     }
 
 }
