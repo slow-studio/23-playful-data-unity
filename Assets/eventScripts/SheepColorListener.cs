@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TestListener2 : MonoBehaviour
+public class SheepColorListener : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     //the same event can trigger multiple listeners on different game objects.

@@ -23,8 +23,10 @@ public class delegateMeat : MonoBehaviour
     void OnMouseDown()
     {
         //calling the delegates to turn the sheep to meat
-        meatDelegateFunction += turnMeat;
-        meatDelegateFunction += calledMeat;
+        meatDelegateFunction += turnIntoMeat;
+
+        //in case another function needs to be added
+        // meatDelegateFunction += calledMeat; then write the function below
 
         if (meatDelegateFunction != null)
         {
@@ -32,12 +34,7 @@ public class delegateMeat : MonoBehaviour
         }
     }
 
-    void calledMeat()
-    {
-        print("sheep will now become red");
-    }
-
-    void turnMeat()
+    void turnIntoMeat()
     {
         //sheep turns red if it is currently white
         if (spriteRenderer.color == Color.white)

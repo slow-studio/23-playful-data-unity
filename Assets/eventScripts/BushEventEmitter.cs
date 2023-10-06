@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TestEmitter : MonoBehaviour
+public class BushEventEmitter : MonoBehaviour
 {
     //this emitter code is to trigger events
 
