@@ -15,18 +15,18 @@ public class TestListener2 : MonoBehaviour
     private void OnEnable()
     {
         EventManager.StartListening("Test", onTest);
-        EventManager.StartListening("ChangeColor", OnChangeColor);
+        EventManager.StartListening("ChangeSheep", OnChangeSheep);
     }
     private void OnDisable()
     {
         EventManager.StopListening("Test", onTest);
-        EventManager.StopListening("ChangeColor", OnChangeColor);
+        EventManager.StopListening("ChangeSheep", OnChangeSheep);
     }
     private void OnTest()
     {
         Debug.Log($"{gameObject.name} recieved an EXCITING test :D");
     }
-    private void OnChangeColor(object data)
+    private void OnChangeSheep(object data)
     {
         //c color is the color version of the data being passed
         Color c = (Color)data;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class delegateMeat : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
     public delegate void meatDelegate();
     //public delegate bool ifMeat(int i);
 
@@ -39,11 +40,11 @@ public class delegateMeat : MonoBehaviour
     void turnMeat()
     {
         //sheep turns red if it is currently white
-        if (GetComponent<Renderer>().material.color == Color.white)
-            GetComponent<Renderer>().material.color = Color.red;
+        if (spriteRenderer.color == Color.white)
+            spriteRenderer.color = Color.red;
 
         else
-            GetComponent<Renderer>().material.color = Color.white;
+            spriteRenderer.color = Color.white;
     }
 
 }
