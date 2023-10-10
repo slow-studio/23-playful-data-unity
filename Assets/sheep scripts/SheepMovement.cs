@@ -92,4 +92,9 @@ public class SheepMovement : MonoBehaviour
                                 );
         }
     }
+
+    private void OnCollisionEnter2D(Collision collision)
+    {
+        moving = false;
+    }
 }

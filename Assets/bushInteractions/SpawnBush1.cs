@@ -11,7 +11,8 @@ public class SpawnBush : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Instantiate(edibleBush, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+            GameObject bush = Instantiate(edibleBush, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+            bush.AddComponent<CircleCollider2D>();
         }
     }
 }
