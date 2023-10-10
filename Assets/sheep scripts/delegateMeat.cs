@@ -7,6 +7,7 @@ public class delegateMeat : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public delegate void meatDelegate();
     //public delegate bool ifMeat(int i);
+    public AudioSource sound;
 
     meatDelegate meatDelegateFunction;
     //ifMeat ifMeatFunction;
@@ -18,12 +19,15 @@ public class delegateMeat : MonoBehaviour
 
         //ifMeatFunction = (int i) => { return i < 5; };
         //Debug.Log(ifMeatFunction(1));
+
+        sound = GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
     {
         //calling the delegates to turn the sheep to meat
         meatDelegateFunction += turnIntoMeat;
+        meatDelegateFunction += playBleat;
 
         //in case another function needs to be added
         // meatDelegateFunction += calledMeat; then write the function below
@@ -44,4 +48,9 @@ public class delegateMeat : MonoBehaviour
             spriteRenderer.color = Color.white;
     }
 
+    void playBleat()
+    {
+        sound.Play();
+        print("sound played");
+    }
 }
