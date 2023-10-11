@@ -46,6 +46,9 @@ public class delegateMeat : MonoBehaviour
 
         else
             spriteRenderer.color = Color.white;
+
+       // sound.Play();
+       // print("sound played");
     }
 
     void playBleat()
