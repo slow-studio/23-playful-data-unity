@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class GetsEaten : MonoBehaviour
 {
-  private void OnTriggerEnter()
+    
+    public Vector3 position;
+    public GameObject dirtRemains;
+
+  private void OnMouseDown()
     {
-        Debug.Log("sheep has triggered an event by touching bush");
+        position = this.gameObject.transform.position;
         Destroy(this.gameObject);
+
+
+        GameObject dirt = Instantiate(dirtRemains, position, Quaternion.identity);
     }
 
-    private void OnCollisionEnter2D(Collision collision)
-    {
-        Debug.Log("collision has been triggered");
-    }
 }
