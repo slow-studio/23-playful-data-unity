@@ -8,11 +8,17 @@ public class SheepMovement : MonoBehaviour
     Vector2 tap, // where the person taps on the screen
             goal // where the sheep needs to go to
             ;
-    bool moving;
+    public bool moving;
+    private Animator animator;
     float minimumDistance = 0.1f;
     float sheepMoveDistance = 2f; // this is how much the sheep moves when asked to
     float sheepJitter = 0.25f; // when the sheep moves, it moves a bit randomly by this value
 
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Update()
     {
 
@@ -29,6 +35,8 @@ public class SheepMovement : MonoBehaviour
             setDestination();
             // instruct sheep that it can move
             moving = true;
+
+            animator.SetBool("walking", AnimateMove());
         }
 
         void setDestination() {
@@ -65,6 +73,8 @@ public class SheepMovement : MonoBehaviour
 
         if (moving) {
 
+            AnimateMove();
+
             // store the sheep's current position
             Vector2 sheepPos = getSheepPos();
 
@@ -85,11 +95,18 @@ public class SheepMovement : MonoBehaviour
             else moving = false;
         }
 
-        Vector2 getSheepPos() {
-            return new Vector2 ( 
-                                GetComponent<Transform>().position.x, 
-                                GetComponent<Transform>().position.y 
-                                );
-        }
+       
+    }
+    Vector2 getSheepPos()
+    {
+        return new Vector2(
+                            GetComponent<Transform>().position.x,
+                            GetComponent<Transform>().position.y
+                            );
+    }
+
+    private bool AnimateMove()
+    {
+        return moving;
     }
 }
